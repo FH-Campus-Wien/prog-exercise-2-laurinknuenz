@@ -116,19 +116,32 @@ public class App {
                 list.add(input);
                 counter++;
                 if (input == 5) negativeCounter++;
-            }
-            else if (input == 0) {
+            } else if (input == 0) {
                 if (list.size() == 0) list.add(0);
                 System.out.println(String.format("Average: %.2f", list.stream().mapToInt(i -> (int) i).average().getAsDouble()));
                 System.out.println("Negative marks: " + negativeCounter);
-            }
-            else System.out.println("Invalid mark!");
+            } else System.out.println("Invalid mark!");
         } while (input != 0);
     }
 
     //todo Task 6
     public void happyNumbers() {
-        // input your solution here
+        Integer number;
+        char[] splitNumber;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("n: ");
+        number = scanner.nextInt();
+
+        while (number != 1 && number != 4) {
+            splitNumber = number.toString().toCharArray();
+            number = 0;
+            for (int i = 0; i < splitNumber.length; i++){
+                number += Character.getNumericValue(splitNumber[i]) * Character.getNumericValue(splitNumber[i]);
+            }
+        }
+        if (number == 1) System.out.println("Happy number!");
+        if (number == 4) System.out.println("Sad number!");
     }
 
     public static void main(String[] args) {
